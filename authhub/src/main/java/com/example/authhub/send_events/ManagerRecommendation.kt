@@ -20,7 +20,20 @@ object ManagerRecommendation : EventResult {
         val json = JSONObject()
         json.put("name", "Leonardo")
         json.put("isError", error)
+        // pode implementar na classe o callback ou implementar para cada notificação
         events.notify("getOtp", json, this)
+
+        // implementa e espera o resultado direto na notificação.
+//        events.notify("getOtp", json, object : EventResult {
+//            override fun <T> success(eventType: String, result: T) {
+//                // trata o sucesso
+//            }
+//
+//            override fun fail(eventType: String, error: String) {
+//               // trata o erro
+//            }
+//
+//        })
     }
 
     override fun <T> success(eventType: String, result: T) {
